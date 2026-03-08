@@ -13,6 +13,12 @@ namespace Scripts.EntryPoint
             OnSceneEnter();
         }
 
+
+        private void OnDisable()
+        {
+            OnSceneExit();
+        }
+
         public abstract void OnSceneEnter();
         public abstract void OnSceneExit();
 

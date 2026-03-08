@@ -50,8 +50,9 @@ namespace Scripts.EntryPoint
 
 
 #region AUDIO SETTINGS REGION
-        private void ShowAudioSettings(bool isActive)
+        private void ShowAudioSettings(bool isActive = true)
         {
+            _audioSettingsStruct.audioSettingsHeader?.gameObject.SetActive(isActive);
             _audioSettingsStruct.musicVolumeSlider?.gameObject.SetActive(isActive);
             _audioSettingsStruct.soundVolumeSlider?.gameObject.SetActive(isActive);
             _audioSettingsStruct.sfxVolumeSlider?.gameObject.SetActive(isActive);
@@ -81,9 +82,12 @@ namespace Scripts.EntryPoint
 
 #region GRAPHICS SETTINGS REGION
 
-        private void ShowGraphicsSettings(bool isActive)
+        private void ShowGraphicsSettings(bool isActive = true)
         {
-            
+            _graphicsSettingsStruct.graphicsSettingsHeader?.gameObject.SetActive(isActive);
+            _graphicsSettingsStruct.resolutionDropdown?.gameObject.SetActive(isActive);
+            _graphicsSettingsStruct.qualityDropdown?.gameObject.SetActive(isActive);
+            _graphicsSettingsStruct.windowedModeToggle?.gameObject.SetActive(isActive);
         }
 
 
@@ -115,6 +119,26 @@ namespace Scripts.EntryPoint
 
 
 #region LANGUAGE SETTINGS REGION
+
+        private void ShowLanguageSettings(bool isActive = true)
+        {
+            if (!isActive)
+            {
+                return;
+            }
+        }
+
+
+        private void GetLanguage()
+        {
+            
+        }
+
+
+        private void SetLanguage()
+        {
+            
+        }
 
 #endregion
 
