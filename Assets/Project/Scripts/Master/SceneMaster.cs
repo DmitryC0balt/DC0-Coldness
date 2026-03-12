@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using Scripts.EntryPoint;
 using Scripts.SceneStates;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,37 +12,65 @@ namespace Scripts.Master
     {
         private Dictionary<Type, SceneState> _sceneStatesDictionary;
         private SceneState _currentState;
+        private GameMaster _gameMaster;
+        private const float _persistanceProgressValue = 0.9f;
 
-        public SceneMaster()
+
+        public SceneMaster(GameMaster gameMaster)
         {
-            _sceneStatesDictionary = new Dictionary<Type, SceneState>();
-            AddState(new MenuState());
-            AddState(new GameState());
-        }
-
-
-        private void AddState(SceneState state)
-        {
-            var type = state.GetType();
-            _sceneStatesDictionary.Add(type, state);
+            _gameMaster = gameMaster;
+            _sceneStatesDictionary = new Dictionary<Type, SceneState>
+            {
+                { typeof(MenuState), new MenuState(false) },
+                { typeof(GameState), new GameState(true) }
+            };            
         }
 
 
         private void SwitchState<TargetState>() where TargetState : SceneState
         {
+            _gameMaster.StartCoroutine(LoadScene<TargetState>());
+        }
+
+
+        private IEnumerator LoadScene<TargetState>() where TargetState : SceneState
+        {
+            SceneManager.LoadScene("Loading", LoadSceneMode.Additive);
+            yield return null;
+
             _currentState?.OnStateExit();
+    
+            var loadingSceneEntryPoint = UnityEngine.Object.FindFirstObjectByType<LoadingSceneEntryPoint>();
 
-            var type = typeof(TargetState);
-
-            if (_sceneStatesDictionary.ContainsKey(type))
+            if (loadingSceneEntryPoint != null)
             {
+                loadingSceneEntryPoint.ShowLoadingBar(true);
+                loadingSceneEntryPoint.SetLoadingBarValue(0);
+
+                var type = typeof(TargetState);
+
                 _currentState = _sceneStatesDictionary[type];
-                _currentState.OnStateEnter();
-                return;
+                AsyncOperation asyncSceneLoad = _currentState.OnStateEnter();
+                asyncSceneLoad.allowSceneActivation = false;
+
+                while (!asyncSceneLoad.isDone)
+                {
+                    var progressValue = Mathf.Clamp01(asyncSceneLoad.progress / _persistanceProgressValue);
+                    loadingSceneEntryPoint.SetLoadingBarValue(progressValue);
+
+                    if (asyncSceneLoad.progress >= _persistanceProgressValue)
+                    {
+                        loadingSceneEntryPoint.ShowLoadingBar(false);
+                        asyncSceneLoad.allowSceneActivation = true;
+                    }
+
+                    yield return null;
+                }
+
             }
 
-            Debug.Log($"Can't get state {type}!");
-        }
+            SceneManager.UnloadSceneAsync("Loading");
+        }   
 
 
         public void SwitchMenuState() => SwitchState<MenuState>();

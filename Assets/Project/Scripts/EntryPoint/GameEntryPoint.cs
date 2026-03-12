@@ -15,7 +15,7 @@ namespace Scripts.EntryPoint
         {
             LoadGameMaster();
     
-            _sceneMaster = new SceneMaster();
+            _sceneMaster = new SceneMaster(_gameMaster);
             _dataMaster = new DataMaster(_gameMaster.GetDataStruct());
         }
 

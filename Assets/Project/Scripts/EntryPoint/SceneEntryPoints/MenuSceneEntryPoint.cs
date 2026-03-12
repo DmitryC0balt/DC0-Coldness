@@ -16,6 +16,7 @@ namespace Scripts.EntryPoint
 
 
         private GuiScreenContainer _guiScreenContainer;
+        
 
         public override void OnSceneEnter()
         {

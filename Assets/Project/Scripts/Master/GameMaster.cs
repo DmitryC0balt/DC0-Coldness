@@ -1,4 +1,4 @@
-using Scripts.Loading;
+//using Scripts.Loading;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -6,7 +6,6 @@ namespace Scripts.Master
 {
     public class GameMaster : MonoBehaviour
     {
-        [SerializeField] private LoadingScreen _loadingScreen;
         [SerializeField] private AudioMixer _audioMixer;
         [SerializeField] private GameData _gameData;
         [SerializeField] private SettingsData _settingsData;

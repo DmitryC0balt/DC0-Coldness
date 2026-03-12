@@ -8,8 +8,7 @@ namespace Scripts.GUI
     {
         private Dictionary<Type, GuiScreen> _guiScreenDictionary;
         private bool _isInitialized = false;
-
-
+        
 
         public GuiScreenContainer() => _guiScreenDictionary = new Dictionary<Type, GuiScreen>();
 
