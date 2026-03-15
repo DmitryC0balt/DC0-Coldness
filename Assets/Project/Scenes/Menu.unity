@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 53892770}
   - component: {fileID: 53892769}
   m_Layer: 5
-  m_Name: Button
+  m_Name: PlayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,10 +153,10 @@ RectTransform:
   - {fileID: 1616154772}
   m_Father: {fileID: 689524497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 240, y: -43.333332}
-  m_SizeDelta: {x: 480, y: 86.666664}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &53892769
 MonoBehaviour:
@@ -201,7 +201,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 53892770}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 637183849}
+        m_TargetAssemblyTypeName: Scripts.EntryPoint.MenuSceneEntryPoint, Assembly-CSharp
+        m_MethodName: EnterGameScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &53892770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,7 +420,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0421\u0446\u0435\u043D\u0430\u0440\u0438\u0441\u0442"
+  m_text: "\u0414\u0435\u043D\u0434\u0438\u0441\u0442"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -702,7 +714,7 @@ GameObject:
   - component: {fileID: 445679836}
   - component: {fileID: 445679835}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: SettingsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -723,10 +735,10 @@ RectTransform:
   - {fileID: 992093414}
   m_Father: {fileID: 689524497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 240, y: -179.99998}
-  m_SizeDelta: {x: 480, y: 86.666664}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &445679835
 MonoBehaviour:
@@ -771,7 +783,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 445679836}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 637183849}
+        m_TargetAssemblyTypeName: Scripts.EntryPoint.MenuSceneEntryPoint, Assembly-CSharp
+        m_MethodName: ShowSettingsScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &445679836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -823,7 +847,7 @@ GameObject:
   - component: {fileID: 446641120}
   - component: {fileID: 446641119}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: ExitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -844,10 +868,10 @@ RectTransform:
   - {fileID: 1146604862}
   m_Father: {fileID: 689524497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 240, y: -316.66666}
-  m_SizeDelta: {x: 480, y: 86.666664}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &446641119
 MonoBehaviour:
@@ -892,7 +916,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 446641120}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 637183849}
+        m_TargetAssemblyTypeName: Scripts.EntryPoint.MenuSceneEntryPoint, Assembly-CSharp
+        m_MethodName: ShowExitConfirmScreen
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &446641120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -988,8 +1024,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0422\u0443\u043F\u0438\u0447\u0430\u043A \u0414\u043C\u0438\u0442\u0440\u0438\u0439
-    \u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440\u043E\u0432\u0438\u0447"
+  m_text: "\u0422\u0440\u0438\u043A\u0441\u0442\u0435\u0440-\u0410\u0432\u0430\u043D\u0442\u044E\u0440\u0438\u0441\u0442
+    \u041A\u043E\u0431\u0430\u043B\u044C\u0442"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1114,7 +1150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52ea40a536fc81342832d47fc94c8376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Scripts.EntryPoint.MenuSceneEntryPoint
-  _screens: []
+  _creditsScreen: {fileID: 1067059366}
+  _mainMenuScreen: {fileID: 1416234505}
+  _exitConfirmScreen: {fileID: 714340188}
 --- !u!1 &650879447
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,8 +1210,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041F\u0435\u0442\u0440\u0443\u0448\u043A\u043E\u0432 \u0410\u0440\u0441\u0435\u043D\u0438\u0439
-    \u0410\u043D\u0442\u043E\u043D\u043E\u0432\u0438\u0447"
+  m_text: "\u0411\u043E\u043B\u044C\u0448\u043E\u0439 \u041B\u0435\u0431\u043E\u0432\u0441\u043A\u0438\u0439"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1329,6 +1366,7 @@ GameObject:
   - component: {fileID: 714340185}
   - component: {fileID: 714340187}
   - component: {fileID: 714340186}
+  - component: {fileID: 714340188}
   m_Layer: 5
   m_Name: ExitConfirm
   m_TagString: Untagged
@@ -1396,6 +1434,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 714340184}
   m_CullTransparentMesh: 1
+--- !u!114 &714340188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714340184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f6901b1ee1d3340ac36b5956d32e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Scripts.GUI.ExitConfirmScreen
 --- !u!1 &749346532
 GameObject:
   m_ObjectHideFlags: 0
@@ -1889,7 +1939,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1004312719}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 637183849}
+        m_TargetAssemblyTypeName: Scripts.EntryPoint.MenuSceneEntryPoint, Assembly-CSharp
+        m_MethodName: ShowExitConfirmScreen
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1004312719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1985,8 +2047,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0411\u0443\u0440\u044B\u0433\u0438\u043D\u0430 \u041E\u043B\u044C\u0433\u0430
-    \u041F\u0430\u0432\u043B\u043E\u0432\u043D\u0430"
+  m_text: "\u0421\u0430\u0440\u0434\u0430\u043D\u0430\u043F\u0430\u043B\u0430 \u0427\u0435\u0440\u043D\u043E\u043C\u043E\u0440\u043E\u0432\u043D\u0430"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2075,6 +2136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1067059365}
+  - component: {fileID: 1067059366}
   m_Layer: 5
   m_Name: Credits
   m_TagString: Untagged
@@ -2103,6 +2165,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1067059366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067059364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52cca6e0603f09a4b960399fb1c54df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Scripts.GUI.CreditsScreen
 --- !u!1 &1146604861
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,8 +2371,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0416\u0434\u0430\u043D\u043E\u0432 \u0412\u043B\u0430\u0434\u0438\u0441\u043B\u0430\u0432
-    \u0414\u043C\u0438\u0442\u0440\u0438\u0435\u0432\u0438\u0447"
+  m_text: "\u041C\u0430\u0440\u0438\u043D\u0410 \u0421\u0430\u043B\u044C\u0435\u0440\u043E\u0412"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2710,7 +2783,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1405805314}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 637183849}
+        m_TargetAssemblyTypeName: Scripts.EntryPoint.MenuSceneEntryPoint, Assembly-CSharp
+        m_MethodName: ShowMenuScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1405805314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2731,8 +2816,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 5b68d8f91beba9042a83705a15ff907c, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2758,13 +2843,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1416234504}
+  - component: {fileID: 1416234505}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1416234504
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2788,6 +2874,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1416234505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416234503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e9e8351d3500794aad5e4df94e329d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Scripts.GUI.MainMenuScreen
 --- !u!1 &1522661923
 GameObject:
   m_ObjectHideFlags: 0
@@ -2845,7 +2943,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0441\u0442"
+  m_text: "\u041F\u043E\u0433\u0440\u043E\u043C\u0438\u0441\u0442"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -2982,7 +3080,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0425\u0443\u0434\u043E\u0436\u043D\u0438\u043A"
+  m_text: "\u0423\u0431\u043E\u0440\u0449\u0438\u043A"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -3712,7 +3810,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1830221633}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 637183849}
+        m_TargetAssemblyTypeName: Scripts.EntryPoint.MenuSceneEntryPoint, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1830221633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4157,7 +4267,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0441\u0442"
+  m_text: "\u0422\u0440\u0443\u0431\u043E\u0447\u0438\u0441\u0442"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -4294,8 +4404,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0422\u0440\u0435\u043C\u0430\u0441\u043E\u0432 \u041A\u0438\u0440\u0438\u043B\u043B
-    \u0418\u043B\u044C\u0438\u0447"
+  m_text: "\u041B\u043E\u0440\u0434 \u041B\u0438\u0447 \u0418\u043B\u044C\u0438\u0447"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4499,7 +4608,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0441\u0442"
+  m_text: "\u0413\u043E\u043B\u044C\u0444\u0438\u0441\u0442"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}

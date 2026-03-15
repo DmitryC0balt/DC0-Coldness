@@ -7,5 +7,11 @@ namespace Scripts.Facade
     {
         private GuiScreenContainer _guiScreenContainer;
         private MonoCashObserver _monoCashListener;
+
+
+        public GameSceneFacade() : base()
+        {
+            
+        }
     }
 }

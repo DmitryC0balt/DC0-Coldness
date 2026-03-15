@@ -8,33 +8,57 @@ namespace Scripts.EntryPoint
         //Значится, так - здесь все, что касается сцены с основным меню - и только с ним.
         //Все, что не относится к меню - долой. Настройки тоже, они в другой сцене.
 
-        [Header("GUI presets")]
-        [SerializeField] private GuiScreen[] _screens;
-        //И в основном-то эта сцена из экранов и состоит - просто заносим все, что наследуется от GuiScreen, 
-        //а дальше входная точка сама прокинет это все в контейнер и запечатает его. Измменить содержимое в
-        //процессе игры не выйдет
+        [SerializeField] private CreditsScreen _creditsScreen;
+        [SerializeField] private MainMenuScreen _mainMenuScreen;
+        [SerializeField] private ExitConfirmScreen _exitConfirmScreen;
 
 
-        private GuiScreenContainer _guiScreenContainer;
-        
+        public override void OnSceneEnter() => ShowMenuScreen();
 
-        public override void OnSceneEnter()
+        public override void OnSceneExit() {}
+
+
+        public void HideAllScreens()
         {
-            _guiScreenContainer = new GuiScreenContainer();
-        }
-
-        public override void OnSceneExit()
-        {
-            
+            _mainMenuScreen.Hide();
+            _creditsScreen.Hide();
+            _exitConfirmScreen.Hide();
         }
 
 
-        private void LoadGui()
+        public void ShowMenuScreen()
         {
-            foreach (var screen in _screens)
+            HideAllScreens();
+            _mainMenuScreen.Show();
+        }
+
+
+        public void ShowCreditsScreen()
+        {
+            HideAllScreens();
+            _creditsScreen.Show();
+        }
+
+
+        public void ShowSettingsScene() => _instance.ShowSettingsScene();
+
+        public void EnterGameScene() => _instance.OpenGameScene();
+
+
+        public void ShowExitConfirmScreen(bool isActive)
+        {
+            if (isActive)
             {
-                _guiScreenContainer.AddScreen(screen);
+                _exitConfirmScreen.Show();
+                return;
             }
+
+            _exitConfirmScreen.Hide();
         }
+
+
+        public void ExitGame() => Application.Quit();
+
     }
+
 }

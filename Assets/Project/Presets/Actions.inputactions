@@ -1,6 +1,35 @@
 {
-    "version": 0,
+    "version": 1,
     "name": "Actions",
-    "maps": [],
+    "maps": [
+        {
+            "name": "PC_Map",
+            "id": "78c6ee62-af48-4b3b-aa5e-411dcc95b9ee",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "f121e8bd-7a6c-46c6-864d-012f8cd3c4c3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c59463fb-b59f-4099-9fed-4b2e40afcdc5",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
     "controlSchemes": []
 }

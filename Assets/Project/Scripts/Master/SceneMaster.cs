@@ -58,8 +58,10 @@ namespace Scripts.Master
                     var progressValue = Mathf.Clamp01(asyncSceneLoad.progress / _persistanceProgressValue);
                     loadingSceneEntryPoint.SetLoadingBarValue(progressValue);
 
+
                     if (asyncSceneLoad.progress >= _persistanceProgressValue)
                     {
+                        yield return new WaitForSeconds(0.5f);
                         loadingSceneEntryPoint.ShowLoadingBar(false);
                         asyncSceneLoad.allowSceneActivation = true;
                     }

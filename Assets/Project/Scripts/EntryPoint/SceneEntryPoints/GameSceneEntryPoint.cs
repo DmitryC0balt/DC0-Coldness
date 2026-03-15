@@ -1,26 +1,39 @@
-using Scripts.Facade;
+using Scripts.CameraMovement;
+using Scripts.Conversation;
+using Scripts.Effect;
 using Scripts.GUI;
+using Scripts.Inventory;
 using Scripts.MonoCash.Tier1;
+using Scripts.Pause;
+using Scripts.Player;
 using UnityEngine;
 
 namespace Scripts.EntryPoint
 {
     public sealed class GameSceneEntryPoint : SceneEntryPoint
     {
-        [Header("Screens")]
-        [SerializeField] private GuiScreen[] _screens;
-        [Space(5)]
+        [Header("Handlers")]
+        [SerializeField] private CameraHandler _cameraHandler; 
+        [SerializeField] private PlayerHandler _playerHandler;
+        [SerializeField] private ConversationHandler _conversationHandler;
+        [SerializeField] private InventoryHandler _inventoryHandler;
+        [SerializeField] private PauseHandler _pauseHandler;
+        [SerializeField] private ScreenEffectHandler _screenEffectHandler;
 
-        [Header("MonoCashListeners")]
-        [SerializeField] private MonoCashListener[] _listeners;
+
+        [Header("Screens")]
+        [SerializeField] private PauseScreen _pauseScreen;
+        [SerializeField] private InventoryScreen _inventoryScreen;
+        [SerializeField] private ConversationScreen _conversationScreen;
         
 
-        private GameSceneFacade _gameSceneFacade;
+        private MonoCashObserver _monoCashObserver;
+
 
 
         public override void OnSceneEnter()
         {
-            _gameSceneFacade = SetupGameSceneFacade();
+            _monoCashObserver = new MonoCashObserver();
         }
 
 
@@ -30,47 +43,56 @@ namespace Scripts.EntryPoint
         }
 
 
-        //Включен в SetupGameSceneFacade
-        private MonoCashObserver SetupMonoCashObserver()
+        protected override void OnInitialization()
         {
-            var monoCashObserver = new MonoCashObserver();
-
-            foreach (var listener in _listeners)
-            {
-                monoCashObserver.AddListener(listener);
-            }
-
-            return monoCashObserver;
+            _monoCashObserver.OnInitialization();
         }
 
 
-        //Включен в SetupGameSceneFacade
-        private GuiScreenContainer SetupScreenContainer()
+        protected override void OnProcess()
         {
-            var guiScreenContainer = new GuiScreenContainer();
-
-            foreach (var screen in _screens)
+            if (!_pauseHandler.isPaused)
             {
-                guiScreenContainer.AddScreen(screen);
+                _monoCashObserver.OnProcess();
             }
-
-            return guiScreenContainer;
         }
 
 
-        private void SetupGameScreens(GameSceneFacade gameSceneFacade)
+        protected override void OnFixedProcess()
+        {
+            if (!_pauseHandler.isPaused)
+            {
+                _monoCashObserver.OnFixedProcess();
+            }
+        }
+
+
+        protected override void OnPostProcess()
+        {
+            if (!_pauseHandler.isPaused)
+            {
+                _monoCashObserver.OnPostProcess();
+            }
+        }
+
+
+        public void ShowConversationScreen(bool isActive)
         {
             
         }
 
 
-        private GameSceneFacade SetupGameSceneFacade()
+        public void ShowInventoryScreen(bool isActive)
         {
-            var monoCashObserver = SetupMonoCashObserver();
-            var guiScreenContainer = SetupScreenContainer();
-            var gameSceneFacade = new GameSceneFacade();
-
-            return gameSceneFacade;
+            
         }
+
+
+        public void SetPause(bool isActive) => _pauseHandler.SetPause(isActive);
+
+        public void ShowSettings() => _instance.ShowSettingsScene();
+
+        public void OpenMenuScene() => _instance.OpenMenuScene();
     }
+
 }

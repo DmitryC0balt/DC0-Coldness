@@ -7,17 +7,19 @@ namespace Scripts.EntryPoint
     {
         protected GameEntryPoint _instance;
 
-        private void Awake()
+        private void Start()
         {
             _instance = GameEntryPoint.GetInstance();
             OnSceneEnter();
         }
 
 
-        private void OnDisable()
-        {
-            OnSceneExit();
-        }
+        private void OnEnable() => OnSceneSetup();
+
+        private void OnDisable() => OnSceneExit();
+
+
+
 
         public abstract void OnSceneEnter();
         public abstract void OnSceneExit();

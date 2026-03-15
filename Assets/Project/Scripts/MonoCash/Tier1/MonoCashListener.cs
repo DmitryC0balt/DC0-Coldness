@@ -4,10 +4,6 @@ namespace Scripts.MonoCash.Tier1
 {
     public abstract class MonoCashListener : MonoBehaviour
     {
-        //Что происходит при добавлении в список
-        public abstract void OnSetup();
-
-
         public virtual void OnInitialization()
         {
             //Что происходит при старте сцены

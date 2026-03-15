@@ -24,29 +24,20 @@ namespace Scripts.EntryPoint
 
         public override void OnSceneEnter()
         {
-            
+            ResetLoadingBarValue();
         }
 
 
         public override void OnSceneExit()
         {
-            
+            ResetLoadingBarValue();
         }
 
+        private void ResetLoadingBarValue() => _loadingBarSetupStruct.loadingBarFill.fillAmount = 0;
 
         public void SetLoadingBarValue(float value) => _loadingBarSetupStruct.loadingBarFill.fillAmount = value;
 
         public void ShowLoadingBar(bool isActive = true) => _loadingBarSetupStruct.loadingBarImage.gameObject.SetActive(isActive);
-
-        private void OnPressReadyButton() => isReadyButtonPressed = true;
-
-        public void ShowReadyAccept()
-        {
-            
-        }
-
-
-        
 
     }
 

@@ -41,9 +41,9 @@ namespace Scripts.EntryPoint
 
         public void OpenGameScene() => _sceneMaster.SwitchGameState();
 
-        public void ShowMenuScene() => _sceneMaster.OpenSettingsScene();
+        public void ShowSettingsScene() => _sceneMaster.OpenSettingsScene();
 
-        public void HideMenuScene() => _sceneMaster.CloseSettingsScene();
+        public void HideSettingsScene() => _sceneMaster.CloseSettingsScene();
 
 #endregion
 
