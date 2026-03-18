@@ -4,27 +4,17 @@ namespace Scripts.Player
 {
     public class PlayerAttack
     {
+        public bool isAvaible{ get; private set;}
+
         public PlayerAttack()
         {
             
         }
 
-
-        public void UpdateSpread()
+        
+        public void SetSpread(float minValue, float maxValue)
         {
             
-        }
-
-
-        public void ResetSpread()
-        {
-            
-        }
-
-
-        private float CalculateSpread()
-        {
-            return 0;
         }
 
 
@@ -32,5 +22,12 @@ namespace Scripts.Player
         {
             
         }
+    }
+
+
+    [System.Serializable]
+    public struct PlayerAttackSetup
+    {
+        
     }
 }

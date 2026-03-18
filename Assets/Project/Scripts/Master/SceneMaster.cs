@@ -82,5 +82,9 @@ namespace Scripts.Master
         public void OpenSettingsScene() => SceneManager.LoadScene("Settings",LoadSceneMode.Additive);
 
         public void CloseSettingsScene() => SceneManager.UnloadSceneAsync("Settings");
+
+        public void OpenSplashScene() => SceneManager.LoadScene("Splash", LoadSceneMode.Additive);
+
+        public void CloseSplashScene() => SceneManager.UnloadSceneAsync("Splash");
     }
 }

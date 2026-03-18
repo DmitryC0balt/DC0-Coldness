@@ -11,12 +11,17 @@ namespace Scripts.EntryPoint
         private SceneMaster _sceneMaster;
         private DataMaster _dataMaster;
 
+        
+        public bool isSplashScreenShowed{get; private set;}
+
         private GameEntryPoint()
         {
             LoadGameMaster();
     
             _sceneMaster = new SceneMaster(_gameMaster);
             _dataMaster = new DataMaster(_gameMaster.GetDataStruct());
+            
+            isSplashScreenShowed = false;
         }
 
 
@@ -37,7 +42,16 @@ namespace Scripts.EntryPoint
 
 #region SCENE_MASTER
 
-        public void OpenMenuScene() => _sceneMaster.SwitchMenuState();
+        public void OpenMenuScene()
+        {
+            _sceneMaster.SwitchMenuState();
+
+            if (!isSplashScreenShowed)
+            {
+                ShowSplashScene();
+                isSplashScreenShowed = true;
+            }
+        }
 
         public void OpenGameScene() => _sceneMaster.SwitchGameState();
 
@@ -45,11 +59,11 @@ namespace Scripts.EntryPoint
 
         public void HideSettingsScene() => _sceneMaster.CloseSettingsScene();
 
+        public void ShowSplashScene() => _sceneMaster.OpenSplashScene();
+
+        public void HideSplashScene() => _sceneMaster.CloseSplashScene();
+
 #endregion
-
-
-
-
 
     }
 }
