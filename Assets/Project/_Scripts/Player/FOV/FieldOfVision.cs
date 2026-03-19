@@ -70,7 +70,10 @@ namespace Scripts.Player.FOV
 
             for (int i = 0; i <= rayCount; i++)
             {
-                Vector3 vertex = origin + GetVectorFromAngle(angle) * distance;
+                var direction = GetVectorFromAngle(angle);
+                Vector3 vertex = origin + direction * distance;
+        
+
                 vertices[vertexIndex] = vertex;
 
                 if (i > 0)
