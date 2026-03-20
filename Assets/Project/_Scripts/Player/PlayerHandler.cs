@@ -1,4 +1,5 @@
 using Scripts.Conversation;
+using Scripts.Health;
 using Scripts.Inventory;
 using Scripts.MonoCash.Tier1;
 using UnityEngine;
@@ -31,7 +32,8 @@ namespace Scripts.Player
         private PlayerMovement _playerMovement;
         private PlayerRotation _playerRotation;
         
-        private PlayerAttack _playerAttack;    
+        private PlayerAttack _playerAttack;
+        private HealthMaster _playerHealth;    
     
 
         //Данные для прочтения/изменения

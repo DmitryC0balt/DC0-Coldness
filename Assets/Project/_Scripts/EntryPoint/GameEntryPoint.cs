@@ -42,62 +42,29 @@ namespace Scripts.EntryPoint
 
 #region SCENE_MASTER
 
+        //Меню
         public void OpenMenuScene() => _sceneMaster.SwitchMenuState();
         
+        //Игра
         public void OpenGameScene() => _sceneMaster.SwitchGameState();
 
-        public void ShowSettingsScene() => _sceneMaster.OpenSettingsScene();
+        //Пауза
+        public void ShowPause(bool isActive) => _sceneMaster.OpenTargetScene(isActive, "Pause");
 
-        public void HideSettingsScene() => _sceneMaster.CloseSettingsScene();
+        //Настройки
+        public void ShowSettings(bool isActive) => _sceneMaster.OpenTargetScene(isActive, "Settings");
 
-        public void ShowSettingsScene(bool isShow)
-        {
-            if (isShow)
-            {
-                _sceneMaster.OpenSettingsScene();
-                return;
-            }
-            _sceneMaster.CloseSettingsScene();
-        }
+        //Заставка
+        public void ShowSplash(bool isActive) => _sceneMaster.OpenTargetScene(isActive, "Splash");
 
+        //Диалог
+        public void ShowConversation(bool isActive) => _sceneMaster.OpenTargetScene(isActive, "Conversation");
 
-        //Сплэш-сцена
-        public void ShowSplashScene(bool show)
-        {
-            
-        }
+        //Инвентарь
+        public void ShowInventory(bool isActive) => _sceneMaster.OpenTargetScene(isActive, "Inventory");
 
-
-        //Диалоговая сцена
-        public void ShowDialogueScene(bool show)
-        {
-            
-        }
-
-
-        //Инвентарная сцена
-        public void ShowInventoryScene(bool show)
-        {
-            
-        }
-
-
-        //Аргументарная сцена
-        public void ShowRecordsScene(bool show)
-        {
-            
-        }
-
-
-        //Показать целевую сцену
-        private void ShowTargetScene(bool show, string sceneName)
-        {
-            if (show)
-            {
-                
-                return;
-            }
-        }
+        //Записи
+        public void ShowRecords(bool isActive) => _sceneMaster.OpenTargetScene(isActive, "Records");
 
 #endregion
 

@@ -90,7 +90,7 @@ namespace Scripts.EntryPoint
 
         public void SetPause(bool isActive) => _pauseHandler.SetPause(isActive);
 
-        public void ShowSettings() => _instance.ShowSettingsScene();
+        public void ShowSettings() => _instance.ShowSettings(true);
 
         public void OpenMenuScene() => _instance.OpenMenuScene();
     }

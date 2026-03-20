@@ -40,7 +40,7 @@ namespace Scripts.EntryPoint
         }
 
 
-        public void ShowSettingsScene() => _instance.ShowSettingsScene();
+        public void ShowSettingsScene() => _instance.ShowSettings(true);
 
         public void EnterGameScene() => _instance.OpenGameScene();
 

@@ -79,12 +79,15 @@ namespace Scripts.Master
 
         public void SwitchGameState() => SwitchState<GameState>();
 
-        public void OpenSettingsScene() => SceneManager.LoadScene("Settings",LoadSceneMode.Additive);
+        public void OpenTargetScene(bool isActive, string targetSceneName)
+        {
+            if (isActive)
+            {
+                SceneManager.LoadScene(targetSceneName, LoadSceneMode.Additive);
+                return;
+            }
 
-        public void CloseSettingsScene() => SceneManager.UnloadSceneAsync("Settings");
-
-        public void OpenSplashScene() => SceneManager.LoadScene("Splash", LoadSceneMode.Additive);
-
-        public void CloseSplashScene() => SceneManager.UnloadSceneAsync("Splash");
+            SceneManager.UnloadSceneAsync(targetSceneName);
+        }
     }
 }

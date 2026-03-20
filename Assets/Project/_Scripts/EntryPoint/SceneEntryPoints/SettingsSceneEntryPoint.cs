@@ -19,7 +19,7 @@ namespace Scripts.EntryPoint
 
         public void ExiSettingsScene()
         {
-            _instance.HideSettingsScene();
+            _instance.ShowSettings(false);
         }        
     }
 
