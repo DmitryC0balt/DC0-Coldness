@@ -50,9 +50,54 @@ namespace Scripts.EntryPoint
 
         public void HideSettingsScene() => _sceneMaster.CloseSettingsScene();
 
-        public void ShowSplashScene() => _sceneMaster.OpenSplashScene();
+        public void ShowSettingsScene(bool isShow)
+        {
+            if (isShow)
+            {
+                _sceneMaster.OpenSettingsScene();
+                return;
+            }
+            _sceneMaster.CloseSettingsScene();
+        }
 
-        public void HideSplashScene() => _sceneMaster.CloseSplashScene();
+
+        //Сплэш-сцена
+        public void ShowSplashScene(bool show)
+        {
+            
+        }
+
+
+        //Диалоговая сцена
+        public void ShowDialogueScene(bool show)
+        {
+            
+        }
+
+
+        //Инвентарная сцена
+        public void ShowInventoryScene(bool show)
+        {
+            
+        }
+
+
+        //Аргументарная сцена
+        public void ShowRecordsScene(bool show)
+        {
+            
+        }
+
+
+        //Показать целевую сцену
+        private void ShowTargetScene(bool show, string sceneName)
+        {
+            if (show)
+            {
+                
+                return;
+            }
+        }
 
 #endregion
 

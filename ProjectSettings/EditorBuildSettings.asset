@@ -9,13 +9,13 @@ EditorBuildSettings:
     path: Assets/Project/_Scenes/Persistence.unity
     guid: 11279844acffffb4cbd421755fbfb6ab
   - enabled: 1
-    path: Assets/Project/_Scenes/Loading.unity
+    path: Assets/Project/_Scenes/UiScenes/Loading.unity
     guid: 8510eb97338c0a74fbbd649777939912
   - enabled: 1
-    path: Assets/Project/_Scenes/Splash.unity
+    path: Assets/Project/_Scenes/UiScenes/Splash.unity
     guid: 5c8bb2303153bff4692c8f50a369b6f4
   - enabled: 1
-    path: Assets/Project/_Scenes/Settings.unity
+    path: Assets/Project/_Scenes/UiScenes/Settings.unity
     guid: c54d57148376021409b31dcf9b784ba6
   - enabled: 1
     path: Assets/Project/_Scenes/Menu.unity

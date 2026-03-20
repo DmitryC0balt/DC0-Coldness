@@ -1,24 +1,30 @@
+using Scripts.Conversation;
+using Scripts.Inventory;
 using Scripts.MonoCash.Tier1;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 
 namespace Scripts.Player
 {
-    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(CharacterController), typeof(Animator))]
     public class PlayerHandler : MonoCashListener
     {
         //Вводные данные
         [Header("Components")]
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private Animator _animator;
-        [SerializeField] private Image _fovImage;
 
 
         [Header("Setups")]
         [SerializeField] private PlayerMovementSetup _playerMovementSetup;
+        [SerializeField] private PlayerConversationSetup _playerConversationSetup;
 
+
+        [Header("Handlers")]
+        [SerializeField] private InventoryHandler _inventoryHandler;
+        [SerializeField] private ConversationHandler _conversationHandler;
+ 
 
         //Классы
         //private PlayerStats _playerStats;
@@ -61,6 +67,7 @@ namespace Scripts.Player
             }
         }
 
+#region UPDATE_REGION
 
         public override void OnFixedProcess()
         {
@@ -76,8 +83,33 @@ namespace Scripts.Player
             //Здесь вся визуальщина!!!
         }
 
+#endregion
+
+
+
+#region GIZMO_REGION
+
+        private void OnDrawGizmos()
+        {
+            if (_playerConversationSetup.drawGizmo)
+            {
+                Gizmos.color = _playerConversationSetup.gizmoColor;
+                Gizmos.DrawWireSphere(_characterController.transform.position, _playerConversationSetup.conversationRadius);
+            }
+        }
+
+#endregion
 
         //P.S. Изначальный код был чудовищный, пришлось около 2 часов портатить, чтобы переписать его
         //с эльфийского на структурный!!!
+    }
+
+
+    [System.Serializable]
+    public struct PlayerConversationSetup
+    {
+        public float conversationRadius;
+        public bool drawGizmo;
+        [ColorUsage(true)]public Color gizmoColor;
     }
 }

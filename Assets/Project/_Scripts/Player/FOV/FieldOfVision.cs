@@ -72,7 +72,16 @@ namespace Scripts.Player.FOV
             {
                 var direction = GetVectorFromAngle(angle);
                 Vector3 vertex = origin + direction * distance;
-        
+
+
+                if (!Physics.Raycast(origin, direction, out var hit, _fieldOfVisionSetup.maxDistance, _fieldOfVisionSetup.objectLayer))
+                {
+                    vertex = origin + GetVectorFromAngle(angle) * _fieldOfVisionSetup.maxDistance;
+                }
+                else
+                {
+                    vertex = hit.point;
+                }
 
                 vertices[vertexIndex] = vertex;
 

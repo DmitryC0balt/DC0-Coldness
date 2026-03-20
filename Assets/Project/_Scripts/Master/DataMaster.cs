@@ -1,3 +1,4 @@
+using Scripts.ScriptableObjects;
 using UnityEngine;
 
 namespace Scripts.Master
@@ -7,6 +8,8 @@ namespace Scripts.Master
         public GameData gameData{get;}
         public SettingsData settingsData{get;}
         public SettingsData defaultSettingsData{get;}
+        
+
 
         public DataMaster(DataStruct dataStruct)
         {

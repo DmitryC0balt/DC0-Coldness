@@ -7,19 +7,12 @@ namespace Scripts.EntryPoint
     {
         public override void OnSceneEnter()
         {
-            StartCoroutine(CloseSplashScene());
+            
         }
 
         public override void OnSceneExit()
         {
            
-        }
-
-
-        public IEnumerator CloseSplashScene()
-        {
-            yield return new WaitForSeconds(2);
-            _instance.HideSplashScene();
         }
     }
 }
