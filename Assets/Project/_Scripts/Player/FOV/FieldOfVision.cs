@@ -24,13 +24,12 @@ namespace Scripts.Player.FOV
         private void Start()
         {
             Initialization();
-            DrawSpreadField();
         }
 
 
         private void LateUpdate()
         {
-            
+            DrawSpreadField();
         }
 
         

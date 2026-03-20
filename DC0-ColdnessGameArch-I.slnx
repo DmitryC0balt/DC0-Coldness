@@ -1,4 +1,7 @@
 ﻿<Solution>
   <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="DialogueEditor.csproj" />
+  <Project Path="DialogueSystem.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="EditorUIUtility.csproj" />
 </Solution>

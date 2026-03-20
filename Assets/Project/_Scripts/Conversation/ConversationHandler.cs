@@ -1,20 +1,14 @@
 using UnityEngine.UI;
-using Scripts.Player;
 using UnityEngine;
 using Scripts.GUI;
 using System.Collections.Generic;
 using Scripts.MonoCash.Tier1;
-using Scripts.NPC;
 
 
 namespace Scripts.Conversation
 {
     public class ConversationHandler : MonoCashListener
     {
-        [Header("Start conversation presets")]
-        [SerializeField] private ConversationPresetsStruct _conversationPresetsStruct;
-        [Space(10)]
-
         [Header("Screen elements setup")]
         [SerializeField] private ScreenElementsStruct _screenElementsStruct;
         [Space(10)]
@@ -39,17 +33,9 @@ namespace Scripts.Conversation
         }
 
 
-        //Начало диалога (проверка необходимых условий перед его началом)
-        public void StartConversation()
+        public void SetupConversation()
         {
             
-        }
-
-
-        //Попытка поймать ближайшую цель для диалога (в разумно заданных пределах)        
-        private NpcHandler GetNearestConversationTarget()
-        {
-            return null;
         }
 
 
@@ -104,6 +90,7 @@ namespace Scripts.Conversation
 
             var addedButton = Instantiate(optionPrefab, contentContainer);
             addedButton.OnShow(optionText);
+            addedButton.SetNextNodeID();
 
             _addedConversationOptionList.Add(addedButton);
         }
@@ -131,38 +118,42 @@ namespace Scripts.Conversation
         {
             foreach (var element in _addedConversationElementList)
             {
-                
+                _addedConversationElementList.Remove(element);
+                Destroy(element);
             }
         }
 
 
         //Очистить контейнер от кнопок с опциями (после прожатия опции)
-        private void ClearAddedButtonsList()
+        private void ClearButtonContainer()
         {
             foreach (var element in _addedConversationOptionList)
             {
-                
+                _addedConversationOptionList.Remove(element);
+                Destroy(element);
             }
         }
 
 #endregion
 
 
-
-#region EVENTS_REGION
-
-        
-
-#endregion
-
-    }
+        public void ShowNextNode()
+        {
+            
+        }
 
 
-    [System.Serializable]
-    public struct ConversationPresetsStruct
-    {
-        public PlayerHandler player;
-        public float minimalConversationDistance;
+        public void OpenInventory()
+        {
+            
+        }
+
+
+        public void UseGun()
+        {
+            
+        }
+
     }
 
 
@@ -173,6 +164,9 @@ namespace Scripts.Conversation
         public Image leftImage;
         public Image rightImage;
         public RectTransform contentContainer;
+        public Button nextStepButton;
+        public Button inventoruButton;
+        public Button gunButton;
     }
 
 
