@@ -1,10 +1,5 @@
 using Scripts.CameraMovement;
-using Scripts.Conversation;
-using Scripts.Effect;
-using Scripts.GUI;
-using Scripts.Inventory;
 using Scripts.MonoCash.Tier1;
-using Scripts.Pause;
 using Scripts.Player;
 using UnityEngine;
 
@@ -15,10 +10,7 @@ namespace Scripts.EntryPoint
         [Header("Handlers")]
         [SerializeField] private CameraHandler _cameraHandler; 
         [SerializeField] private PlayerHandler _playerHandler;
-        [SerializeField] private ConversationHandler _conversationHandler;
-        [SerializeField] private InventoryHandler _inventoryHandler;
-        [SerializeField] private PauseHandler _pauseHandler;
-        [SerializeField] private ScreenEffectHandler _screenEffectHandler;
+        
         
 
         private MonoCashObserver _monoCashObserver;
@@ -44,36 +36,25 @@ namespace Scripts.EntryPoint
 
         protected override void OnProcess()
         {
-            if (!_pauseHandler.isPaused)
-            {
-                _monoCashObserver.OnProcess();
-            }
+            _monoCashObserver.OnProcess();
         }
 
 
         protected override void OnFixedProcess()
         {
-            if (!_pauseHandler.isPaused)
-            {
-                _monoCashObserver.OnFixedProcess();
-            }
+            _monoCashObserver.OnFixedProcess();
         }
 
 
         protected override void OnPostProcess()
         {
-            if (!_pauseHandler.isPaused)
-            {
-                _monoCashObserver.OnPostProcess();
-            }
+            _monoCashObserver.OnPostProcess();
         }
 
 
         public void ShowConversationScreen(bool isActive) => _instance.ShowConversation(isActive);
 
         public void ShowInventoryScreen(bool isActive) => _instance.ShowInventory(isActive);
-
-        public void SetPause(bool isActive) => _pauseHandler.SetPause(isActive);
 
         public void ShowSettings() => _instance.ShowSettings(true);
 

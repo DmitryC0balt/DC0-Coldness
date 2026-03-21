@@ -66,6 +66,9 @@ namespace Scripts.EntryPoint
         //Записи
         public void ShowRecords(bool isActive) => _sceneMaster.OpenTargetScene(isActive, "Records");
 
+        //Конец игры
+        public void ShowGameOver(bool isActive) => _sceneMaster.OpenTargetScene(isActive, "GameOver");
+
 #endregion
 
     }

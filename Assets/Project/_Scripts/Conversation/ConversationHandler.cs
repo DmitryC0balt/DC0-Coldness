@@ -39,6 +39,12 @@ namespace Scripts.Conversation
         }
 
 
+        public void ResetConversation()
+        {
+            
+        }
+
+
         private void SetupLeftImage(Sprite imageSprite) => _screenElementsStruct.leftImage.sprite = imageSprite;
 
         private void SetupRightImage(Sprite imageSprite) => _screenElementsStruct.rightImage.sprite = imageSprite;
