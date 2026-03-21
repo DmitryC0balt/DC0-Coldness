@@ -19,16 +19,9 @@ namespace Scripts.EntryPoint
         [SerializeField] private InventoryHandler _inventoryHandler;
         [SerializeField] private PauseHandler _pauseHandler;
         [SerializeField] private ScreenEffectHandler _screenEffectHandler;
-
-
-        [Header("Screens")]
-        [SerializeField] private PauseScreen _pauseScreen;
-        [SerializeField] private InventoryScreen _inventoryScreen;
-        [SerializeField] private ConversationScreen _conversationScreen;
         
 
         private MonoCashObserver _monoCashObserver;
-
 
 
         public override void OnSceneEnter()
@@ -76,17 +69,9 @@ namespace Scripts.EntryPoint
         }
 
 
-        public void ShowConversationScreen(bool isActive)
-        {
-            
-        }
+        public void ShowConversationScreen(bool isActive) => _instance.ShowConversation(isActive);
 
-
-        public void ShowInventoryScreen(bool isActive)
-        {
-            
-        }
-
+        public void ShowInventoryScreen(bool isActive) => _instance.ShowInventory(isActive);
 
         public void SetPause(bool isActive) => _pauseHandler.SetPause(isActive);
 

@@ -2,6 +2,7 @@ using Scripts.Conversation;
 using Scripts.Health;
 using Scripts.Inventory;
 using Scripts.MonoCash.Tier1;
+using Scripts.Player.FOV;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,7 +20,9 @@ namespace Scripts.Player
 
         [Header("Setups")]
         [SerializeField] private PlayerMovementSetup _playerMovementSetup;
+        [SerializeField] private PlayerAttackSetup _playerAttackSetup;
         [SerializeField] private PlayerConversationSetup _playerConversationSetup;
+        [SerializeField] private PlayerFieldOfVisionSetup _playerFieldOfVisionSetup;
 
 
         [Header("Handlers")]

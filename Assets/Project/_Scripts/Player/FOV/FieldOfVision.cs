@@ -6,7 +6,7 @@ namespace Scripts.Player.FOV
     [RequireComponent(typeof(MeshFilter))]
     public class FieldOfVision : MonoBehaviour
     {
-        [SerializeField] private FieldOfVisionSetup _fieldOfVisionSetup;
+        [SerializeField] private PlayerFieldOfVisionSetup _fieldOfVisionSetup;
 
 
         private MeshFilter _meshFilter;
@@ -128,7 +128,7 @@ namespace Scripts.Player.FOV
 
 
     [System.Serializable]
-    public struct FieldOfVisionSetup
+    public struct PlayerFieldOfVisionSetup
     {
         [Header("Setup")]
         public int maxDistance;
