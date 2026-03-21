@@ -10,6 +10,13 @@ namespace Scripts.Master
         [SerializeField] private GameData _gameData;
         [SerializeField] private SettingsData _settingsData;
         [SerializeField] private SettingsData _defaultSettingsData;
+        [Header("Datasets")]
+        [SerializeField] private PlayerStatsDataset _playerStatsDataset;
+        [SerializeField] private ConversationDataset _conversationDataset;
+
+
+        public PlayerStatsDataset playerStatsDataset => _playerStatsDataset;
+        public ConversationDataset conversationDataset => _conversationDataset;
 
 
         public DataStruct GetDataStruct()
