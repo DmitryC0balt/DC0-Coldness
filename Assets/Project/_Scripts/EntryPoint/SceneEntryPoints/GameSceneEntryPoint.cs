@@ -3,6 +3,7 @@ using Scripts.MonoCash.Tier1;
 using Scripts.Player;
 using UnityEngine;
 
+
 namespace Scripts.EntryPoint
 {
     public sealed class GameSceneEntryPoint : SceneEntryPoint
@@ -10,9 +11,7 @@ namespace Scripts.EntryPoint
         [Header("Handlers")]
         [SerializeField] private CameraHandler _cameraHandler; 
         [SerializeField] private PlayerHandler _playerHandler;
-        
-        
-
+                
         private MonoCashObserver _monoCashObserver;
 
 
@@ -52,13 +51,8 @@ namespace Scripts.EntryPoint
         }
 
 
-        public void ShowConversationScreen(bool isActive) => _instance.ShowConversation(isActive);
+        private void OpenMenuScene() => _instance.OpenMenuScene();
 
-        public void ShowInventoryScreen(bool isActive) => _instance.ShowInventory(isActive);
-
-        public void ShowSettings() => _instance.ShowSettings(true);
-
-        public void OpenMenuScene() => _instance.OpenMenuScene();
     }
 
 }

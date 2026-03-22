@@ -3,13 +3,58 @@
     "name": "Actions",
     "maps": [
         {
-            "name": "PC_Map",
-            "id": "78c6ee62-af48-4b3b-aa5e-411dcc95b9ee",
+            "name": "Player",
+            "id": "ed746ba6-8e27-42ca-8814-f0fc0a3bc5fb",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "MovementDirection",
+                    "type": "Value",
+                    "id": "99c3a0dc-0ef4-43b5-85fb-74e27c345085",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MousePosition",
+                    "type": "Value",
+                    "id": "712fa1e1-be03-49a0-9610-3bfdd61d9868",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Inventory",
                     "type": "Button",
-                    "id": "f121e8bd-7a6c-46c6-864d-012f8cd3c4c3",
+                    "id": "f75c7be8-91e4-42ba-809f-8b589662ebe0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Records",
+                    "type": "Button",
+                    "id": "88881e99-0207-44dd-b877-14e527f652a7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Conversation",
+                    "type": "Button",
+                    "id": "94aa9ede-5230-484d-ad39-f8971c020b10",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "4c068529-13b2-46b2-a418-ad79561b523e",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -18,18 +63,134 @@
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "c59463fb-b59f-4099-9fed-4b2e40afcdc5",
-                    "path": "",
+                    "name": "2D Vector",
+                    "id": "48fb0eed-f19d-445f-afd5-d71297622b64",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "MovementDirection",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "6074677d-4e3d-456a-8d00-e2369ab8609f",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementDirection",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "064c2954-d8f0-48c0-97ff-33de806acc88",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementDirection",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "ecc45da6-d5f8-4566-af7a-c6fdd52a30ac",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementDirection",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "c1e24d0c-fb4f-4682-959d-f80afc0d9bb1",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovementDirection",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "6980ba75-0e90-4dea-b63a-72bbfd268e5c",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";PC",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f99ca576-5b3e-471b-a13a-19f0e6bb031a",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";PC",
+                    "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f66b901f-d2f9-4b1c-ac97-340b1d97b9f4",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";PC",
+                    "action": "Records",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0f9dc292-ef80-4eab-b7cb-a2b2dd8f1c27",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";PC",
+                    "action": "Conversation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "544b998d-9e09-4154-beae-846d486ba9b1",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";PC",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "PC",
+            "bindingGroup": "PC",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }

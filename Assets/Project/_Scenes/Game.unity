@@ -254,8 +254,8 @@ MonoBehaviour:
   _characterController: {fileID: 6581522}
   _animator: {fileID: 6581527}
   _playerMovementSetup:
-    movementSpeed: 0
-    angularSpeed: 0
+    movementSpeed: 10
+    angularSpeed: 50
   _playerConversationSetup:
     conversationRadius: 6
     drawGizmo: 1
@@ -273,8 +273,6 @@ MonoBehaviour:
     objectLayer:
       serializedVersion: 2
       m_Bits: 0
-  _inventoryHandler: {fileID: 0}
-  _conversationHandler: {fileID: 0}
 --- !u!95 &6581527
 Animator:
   serializedVersion: 7
@@ -440,8 +438,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 208395339}
-  - component: {fileID: 208395341}
   - component: {fileID: 208395340}
+  - component: {fileID: 208395341}
   m_Layer: 0
   m_Name: InputHandler
   m_TagString: Untagged
@@ -476,6 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5234e739e6c44fb41abf38194f5622fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Scripts.Input.InputHandler
+  _playerHandler: {fileID: 6581526}
 --- !u!114 &208395341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -489,7 +488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
   m_Actions: {fileID: -944628639613478452, guid: f836ef60e34fe3349a8b3a43678bf29c, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -500,12 +499,36 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 99c3a0dc-0ef4-43b5-85fb-74e27c345085
+    m_ActionName: 'Player/MovementDirection[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 712fa1e1-be03-49a0-9610-3bfdd61d9868
+    m_ActionName: 'Player/MousePosition[/Mouse/position]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f75c7be8-91e4-42ba-809f-8b589662ebe0
+    m_ActionName: 'Player/Inventory[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 88881e99-0207-44dd-b877-14e527f652a7
+    m_ActionName: 'Player/Records[/Keyboard/r]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 94aa9ede-5230-484d-ad39-f8971c020b10
+    m_ActionName: 'Player/Conversation[/Keyboard/q]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4c068529-13b2-46b2-a418-ad79561b523e
+    m_ActionName: 'Player/Pause[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: PC_Map
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 2071620056}
 --- !u!1 &321542727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,6 +1421,7 @@ GameObject:
   - component: {fileID: 1011251184}
   - component: {fileID: 1011251183}
   - component: {fileID: 1011251182}
+  - component: {fileID: 1011251187}
   m_Layer: 0
   m_Name: Npc
   m_TagString: Untagged
@@ -1459,7 +1483,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1011251181}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -1523,6 +1547,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1011251187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011251181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4b2c07fbc6ad8041b09907d350f4418, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Scripts.NPC.NpcSplash
+  _splash: {fileID: 0}
+  _splashImage: {fileID: 0}
 --- !u!1 &1052325423
 GameObject:
   m_ObjectHideFlags: 0

@@ -71,5 +71,16 @@ namespace Scripts.EntryPoint
 
 #endregion
 
+
+
+#region DATA_MASTER
+
+        //Игра приостановлена
+        public bool isGamePaused => _dataMaster.isGamePaused;
+
+        //Открыты сторонние сцены
+        public bool hasSideScenes => _dataMaster.hasSideScenes;
+#endregion
+
     }
 }

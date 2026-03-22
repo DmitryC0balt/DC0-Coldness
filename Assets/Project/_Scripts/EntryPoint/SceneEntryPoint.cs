@@ -14,18 +14,11 @@ namespace Scripts.EntryPoint
         }
 
 
-        private void OnEnable() => OnSceneSetup();
-
-        private void OnDisable() => OnSceneExit();
-
-
+        private void OnDestroy() => OnSceneExit();
 
 
         public abstract void OnSceneEnter();
         public abstract void OnSceneExit();
-
-
-        protected virtual void OnSceneSetup() {}
 
 
         protected virtual void OnInitialization() {}

@@ -25,11 +25,6 @@ namespace Scripts.Player
         [SerializeField] private PlayerFieldOfVisionSetup _playerFieldOfVisionSetup;
 
 
-        [Header("Handlers")]
-        [SerializeField] private InventoryHandler _inventoryHandler;
-        [SerializeField] private ConversationHandler _conversationHandler;
- 
-
         //Классы
         //private PlayerStats _playerStats;
         private PlayerMovement _playerMovement;
@@ -50,6 +45,13 @@ namespace Scripts.Player
         }
 
 
+        private void Start() => OnInitialization();
+
+        private void FixedUpdate() => OnFixedProcess();
+
+        private void LateUpdate() => OnFixedProcess();
+
+
         public override void OnInitialization()
         {
             _characterController = GetComponent<CharacterController>();
@@ -60,17 +62,31 @@ namespace Scripts.Player
         }
 
 
-        public void SetDirectionVector(InputAction.CallbackContext context)
+        public void SetMovementDirection(Vector2 direction)
         {
-            var movementInputVector = context.ReadValue<Vector2>();
-            _playerMovement.SetDirection(movementInputVector);
+            _playerMovement.SetDirection(direction);
 
             if (isMoving)
             {
-                _playerRotation.SetDirection(movementInputVector);
-                return;
+                _playerRotation.SetDirection(direction);
             }
         }
+
+
+        public void SetMousePosition(Vector2 position)
+        {
+            if (isMoving)
+            {
+                _playerRotation.SetDirection(position);
+            }
+        }
+
+
+        public void PerformAttack()
+        {
+            
+        }
+
 
 #region UPDATE_REGION
 
