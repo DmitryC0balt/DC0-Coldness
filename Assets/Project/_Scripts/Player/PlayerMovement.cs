@@ -4,7 +4,7 @@ namespace Scripts.Player
 {
     public class PlayerMovement
     {
-        private CharacterController _characterController;
+        private Rigidbody _rigidbody;
         private float _movementSpeed;
 
 
@@ -14,31 +14,25 @@ namespace Scripts.Player
         public bool isMoving{ get; private set;}
 
 
-        public PlayerMovement(CharacterController characterController, PlayerMovementSetup playerMovementSetup)
+        public PlayerMovement(Rigidbody rigidbody, PlayerMovementSetup playerMovementSetup)
         {
-            _characterController = characterController;
-            _movementSpeed = playerMovementSetup.movementSpeed;
+           _rigidbody = rigidbody;
+           _movementSpeed = playerMovementSetup.movementSpeed;
         }
 
 
         public void SetDirection(Vector2 direction)
         {
             _currentDirection = direction;
-
-            if (_currentDirection.magnitude > 0)
-            {
-                isMoving = true;
-                return;
-            }
-
-            isMoving = false;
         }
 
 
         public void PerformMovement()
         {
-            var direction = new Vector3(_currentDirection.x, 0, _currentDirection.y);
-            _characterController.Move(direction * _movementSpeed * Time.deltaTime);
+            var direction = new Vector3(_currentDirection.x, 0, _currentDirection.y).normalized;
+
+            Vector3 newPosition = _rigidbody.position + direction * _movementSpeed * Time.fixedDeltaTime;
+            _rigidbody.MovePosition(newPosition);
         }
     }
 

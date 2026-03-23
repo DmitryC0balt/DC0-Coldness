@@ -49,7 +49,10 @@ namespace Scripts.EntryPoint
         public void OpenGameScene() => _sceneMaster.SwitchGameState();
 
         //Пауза
-        public void ShowPause(bool isActive) => _sceneMaster.OpenTargetScene(isActive, "Pause");
+        public void ShowPause(bool isActive)
+        {
+            _sceneMaster.OpenTargetScene(isActive, "Pause");
+        }
 
         //Настройки
         public void ShowSettings(bool isActive) => _sceneMaster.OpenTargetScene(isActive, "Settings");
@@ -71,16 +74,6 @@ namespace Scripts.EntryPoint
 
 #endregion
 
-
-
-#region DATA_MASTER
-
-        //Игра приостановлена
-        public bool isGamePaused => _dataMaster.isGamePaused;
-
-        //Открыты сторонние сцены
-        public bool hasSideScenes => _dataMaster.hasSideScenes;
-#endregion
 
     }
 }

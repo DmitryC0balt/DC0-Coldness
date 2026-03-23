@@ -76,10 +76,10 @@
                 {
                     "name": "up",
                     "id": "6074677d-4e3d-456a-8d00-e2369ab8609f",
-                    "path": "<Keyboard>/upArrow",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";PC",
                     "action": "MovementDirection",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -87,10 +87,10 @@
                 {
                     "name": "down",
                     "id": "064c2954-d8f0-48c0-97ff-33de806acc88",
-                    "path": "<Keyboard>/downArrow",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";PC",
                     "action": "MovementDirection",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -98,10 +98,10 @@
                 {
                     "name": "left",
                     "id": "ecc45da6-d5f8-4566-af7a-c6fdd52a30ac",
-                    "path": "<Keyboard>/leftArrow",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";PC",
                     "action": "MovementDirection",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -109,10 +109,10 @@
                 {
                     "name": "right",
                     "id": "c1e24d0c-fb4f-4682-959d-f80afc0d9bb1",
-                    "path": "<Keyboard>/rightArrow",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";PC",
                     "action": "MovementDirection",
                     "isComposite": false,
                     "isPartOfComposite": true

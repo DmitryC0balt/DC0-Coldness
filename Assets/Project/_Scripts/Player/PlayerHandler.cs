@@ -1,20 +1,16 @@
-using Scripts.Conversation;
 using Scripts.Health;
-using Scripts.Inventory;
 using Scripts.MonoCash.Tier1;
 using Scripts.Player.FOV;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 
 namespace Scripts.Player
 {
-    [RequireComponent(typeof(CharacterController), typeof(Animator))]
     public class PlayerHandler : MonoCashListener
     {
         //Вводные данные
         [Header("Components")]
-        [SerializeField] private CharacterController _characterController;
+        [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private Animator _animator;
 
 
@@ -23,7 +19,7 @@ namespace Scripts.Player
         [SerializeField] private PlayerAttackSetup _playerAttackSetup;
         [SerializeField] private PlayerConversationSetup _playerConversationSetup;
         [SerializeField] private PlayerFieldOfVisionSetup _playerFieldOfVisionSetup;
-
+        [SerializeField] private FieldOfVision _fieldOfVision;
 
         //Классы
         //private PlayerStats _playerStats;
@@ -32,6 +28,8 @@ namespace Scripts.Player
         
         private PlayerAttack _playerAttack;
         private HealthMaster _playerHealth;    
+
+        private Camera _camera;
     
 
         //Данные для прочтения/изменения
@@ -47,6 +45,7 @@ namespace Scripts.Player
 
         private void Start() => OnInitialization();
 
+
         private void FixedUpdate() => OnFixedProcess();
 
         private void LateUpdate() => OnFixedProcess();
@@ -54,31 +53,26 @@ namespace Scripts.Player
 
         public override void OnInitialization()
         {
-            _characterController = GetComponent<CharacterController>();
-            _playerMovement = new PlayerMovement(_characterController, _playerMovementSetup);
-            _playerRotation = new PlayerRotation(_characterController, _playerMovementSetup);
+            _rigidbody = GetComponent<Rigidbody>();
+            _animator = GetComponent<Animator>();
+
+            _playerMovement = new PlayerMovement(_rigidbody, _playerMovementSetup);
+            _playerRotation = new PlayerRotation(_rigidbody, _playerMovementSetup);
+
 
             _playerAttack = new PlayerAttack();
+            _camera = Camera.main;
+
+            _fieldOfVision.Initialization();
+           
+            _fieldOfVision.DrawSpreadField();
         }
 
 
-        public void SetMovementDirection(Vector2 direction)
+        public void SetDirection(Vector2 direction)
         {
             _playerMovement.SetDirection(direction);
-
-            if (isMoving)
-            {
-                _playerRotation.SetDirection(direction);
-            }
-        }
-
-
-        public void SetMousePosition(Vector2 position)
-        {
-            if (isMoving)
-            {
-                _playerRotation.SetDirection(position);
-            }
+            //_fieldOfVision.SetOrigin(transform.position);
         }
 
 
@@ -92,16 +86,14 @@ namespace Scripts.Player
 
         public override void OnFixedProcess()
         {
-            //Здесь вся физика!!!
-            _playerMovement.PerformMovement();//Здесь ходить
-            _playerRotation.PerformRotation();//Здесь крутиться
-            //Атака в пути
+            _playerMovement.PerformMovement();
+           //_fieldOfVision.PerformCursorRotation();
         }
 
 
         public override void OnPostProcess()
         {
-            //Здесь вся визуальщина!!!
+            
         }
 
 #endregion
@@ -115,7 +107,7 @@ namespace Scripts.Player
             if (_playerConversationSetup.drawGizmo)
             {
                 Gizmos.color = _playerConversationSetup.gizmoColor;
-                Gizmos.DrawWireSphere(_characterController.transform.position, _playerConversationSetup.conversationRadius);
+                Gizmos.DrawWireSphere(gameObject.transform.position, _playerConversationSetup.conversationRadius);
             }
         }
 

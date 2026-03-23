@@ -1,58 +1,55 @@
+using Scripts.AltInput;
 using Scripts.CameraMovement;
 using Scripts.MonoCash.Tier1;
-using Scripts.Player;
+using Scripts.NewPlayer;
 using UnityEngine;
 
 
 namespace Scripts.EntryPoint
 {
-    public sealed class GameSceneEntryPoint : SceneEntryPoint
+    public sealed class GameSceneEntryPoint : MonoBehaviour
     {
+        [Header("Components")]
+        [SerializeField] private Camera _camera;
+
         [Header("Handlers")]
         [SerializeField] private CameraHandler _cameraHandler; 
         [SerializeField] private PlayerHandler _playerHandler;
+        [SerializeField] private AltInputHandler _inputHandler;
+        //[SerializeField] private InputHandler _inputHandler;
                 
         private MonoCashObserver _monoCashObserver;
 
 
-        public override void OnSceneEnter()
+
+        private void Start()
         {
-            _monoCashObserver = new MonoCashObserver();
+            _inputHandler.SetCamera(_camera);
+            _cameraHandler.SetCamera(_camera);
+
+            _cameraHandler.OnInitialization();
+            _playerHandler.OnInitialization();
+            _inputHandler.OnInitialization();
         }
 
 
-        public override void OnSceneExit()
+        private void Update()
         {
-            
+            _inputHandler.OnProcess();
         }
 
 
-        protected override void OnInitialization()
+        private void FixedUpdate()
         {
-            _monoCashObserver.OnInitialization();
+            _playerHandler.OnFixedProcess();
+            _cameraHandler.OnFixedProcess();
         }
 
 
-        protected override void OnProcess()
+        private void LateUpdate()
         {
-            _monoCashObserver.OnProcess();
+            _playerHandler.OnPostProcess();
         }
-
-
-        protected override void OnFixedProcess()
-        {
-            _monoCashObserver.OnFixedProcess();
-        }
-
-
-        protected override void OnPostProcess()
-        {
-            _monoCashObserver.OnPostProcess();
-        }
-
-
-        private void OpenMenuScene() => _instance.OpenMenuScene();
 
     }
-
 }

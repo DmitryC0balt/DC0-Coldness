@@ -11,6 +11,12 @@ namespace Scripts.CameraMovement
         [SerializeField] private CameraSetupStruct _cameraSetupStruct;
 
 
+        public void SetCamera(Camera camera)
+        {
+            _camera = camera;
+        }
+
+
         public override void OnInitialization()
         {
             SetPosition();
