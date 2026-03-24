@@ -13,7 +13,7 @@ namespace Scripts.AltInput
         private Camera _camera;
 
         private Vector2 _movementDirection;
-        private Vector2 _mousePosition;
+        private Vector3 _mousePosition;
 
 
         private bool _isConversationOpen;
@@ -40,8 +40,33 @@ namespace Scripts.AltInput
             GetMousePosition();
 
             _playerHandler.SetMovementDirection(_movementDirection);
-            //_playerHandler.SetMouseDirection(_mousePosition);
+            _playerHandler.SetMousePosition(_mousePosition);
 
+        }
+
+
+        private void GetMovementDirection()
+        {
+            var horizontalValue = Input.GetAxis("Horizontal");
+            var verticalValue = Input.GetAxis("Vertical");
+            _movementDirection = new Vector2(horizontalValue, verticalValue).normalized;
+        }
+
+
+        private void GetMousePosition()
+        {
+            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+            {
+                Vector3 targetPosition = hit.point;
+                _mousePosition = targetPosition;
+            }
+        }
+
+
+        private void ButtonLogic()
+        {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 //Пауза
@@ -64,33 +89,6 @@ namespace Scripts.AltInput
             {
                 //Записи
             }
-        }
-
-
-        private void GetMovementDirection()
-        {
-            var horizontalValue = Input.GetAxis("Horizontal");
-            var verticalValue = Input.GetAxis("Vertical");
-            _movementDirection = new Vector2(horizontalValue, verticalValue).normalized;
-        }
-
-
-        private void GetMousePosition()
-        {
-            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
-            {
-                var targetPosition = hit.point;
-                _mousePosition = targetPosition;
-                Debug.Log(_mousePosition);
-            }
-        }
-
-
-        private void PauseLogic()
-        {
-            
         }
     }
 }

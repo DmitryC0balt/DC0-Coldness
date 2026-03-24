@@ -8,14 +8,16 @@ namespace Scripts.NewPlayer
     {
         [SerializeField] private PlayerMovementSetup _playerMovementSetup;
         [SerializeField] private PlayerConversationSetup _playerConversationSetup;
+        [SerializeField] private PlayerAttackSetup _playerAttackSetup;
         [SerializeField] private PlayerFieldOfVision _playerFieldOfVision;
         [SerializeField] private Rigidbody _rigidbody;
-        
- 
+    
 
         private PlayerMovement _playerMovement;
         private PlayerRotation _playerRotation;
         private PlayerMouseRotation _playerMouseRotation;
+        private PlayerConversation _playerConversation;
+        private PlayerAttack _playerAttack;
 
 
         public override void OnInitialization()
@@ -25,21 +27,30 @@ namespace Scripts.NewPlayer
             _playerMovement = new PlayerMovement(_rigidbody, _playerMovementSetup);
             _playerRotation = new PlayerRotation(_rigidbody, _playerMovementSetup);
             _playerMouseRotation = new PlayerMouseRotation(_rigidbody, _playerMovementSetup);
+
+            _playerFieldOfVision.OnInitialization();
+        }
+
+
+        public override void OnProcess()
+        {
+            _playerFieldOfVision.SetOrigin(transform.position);
         }
 
 
         public override void OnFixedProcess()
         {
             //Physics
-
             _playerMovement.PerformMovement();
             PlayerRotationLogic(_playerMovement.IsMoving);
+            Debug.Log(transform.position);
         }
 
 
         public override void OnPostProcess()
         {
             //Visuals
+            _playerFieldOfVision.OnPostProcess();
         }
 
 
@@ -47,6 +58,22 @@ namespace Scripts.NewPlayer
         {
             _playerMovement.SetDirection(direction);
             _playerRotation.SetDirection(direction);
+        }
+
+
+        public void SetMousePosition(Vector3 mousePosition)
+        {
+            var direction = mousePosition - _rigidbody.position;
+            direction.y = 0;
+
+            if (direction != Vector3.zero)
+            {
+                direction = direction.normalized;
+                _playerMouseRotation.SetMousePosition(direction);
+                _playerFieldOfVision.SetDirection(direction);
+                Debug.Log(direction);
+            }
+
         }
 
 
@@ -58,6 +85,23 @@ namespace Scripts.NewPlayer
                 return;
             }
             _playerMouseRotation.PerformRotation();
+        }
+
+
+        public void PerformAttack()
+        {
+            
+        }
+
+
+        private void OnDrawGizmos()
+        {
+            if (_playerConversationSetup.drawGizmo)
+            {
+                Gizmos.color = _playerConversationSetup.gizmoColor;
+                var radius = _playerConversationSetup.conversationRadius;
+                Gizmos.DrawWireSphere(transform.position, radius);
+            }
         }
     }
 
@@ -78,10 +122,22 @@ namespace Scripts.NewPlayer
     public struct PlayerConversationSetup
     {
         [Header("Gizmos")]
+        public bool drawGizmo;
         [ColorUsage(true)] public Color gizmoColor;
 
         [Header("Availibility")]
         public float conversationRadius;
         public uint conversationCapacity;
+    }
+
+
+    [System.Serializable]
+    public struct PlayerAttackSetup
+    {
+        public int atkValue;
+        public Transform firePoint;
+        public GameObject muzzleFlash;
+        public GameObject objectImpact;
+        public GameObject bloodImpact;
     }
 }

@@ -304,14 +304,18 @@ MonoBehaviour:
     angularSpeed: 20
     smoothness: 10
   _playerConversationSetup:
-    gizmoColor: {r: 0, g: 0, b: 0, a: 0}
+    drawGizmo: 1
+    gizmoColor: {r: 1, g: 0.5627962, b: 0, a: 1}
     conversationRadius: 0
     conversationCapacity: 0
+  _playerAttackSetup:
+    atkValue: 0
+    firePoint: {fileID: 0}
+    muzzleFlash: {fileID: 0}
+    objectImpact: {fileID: 0}
+    bloodImpact: {fileID: 0}
+  _playerFieldOfVision: {fileID: 934085238}
   _rigidbody: {fileID: 0}
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  _camera: {fileID: 2071620056}
 --- !u!1 &9877165
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,16 +1328,16 @@ GameObject:
   m_Component:
   - component: {fileID: 934085233}
   - component: {fileID: 934085236}
-  - component: {fileID: 934085235}
   - component: {fileID: 934085234}
   - component: {fileID: 934085237}
+  - component: {fileID: 934085238}
   m_Layer: 0
   m_Name: FieldOfVision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &934085233
 Transform:
   m_ObjectHideFlags: 0
@@ -1357,7 +1361,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934085232}
   m_Enabled: 1
-  m_CastShadows: 0
+  m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -1371,7 +1375,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 3
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: d759ca6f4c9d2cf418cee4e8b786ad2b, type: 2}
@@ -1398,32 +1402,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &934085235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 934085232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb41fd1480af4e648a148819da79bc6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Scripts.Player.FOV.FieldOfVision
-  _fieldOfVisionSetup:
-    maxDistance: 100
-    minFovAngle: 25
-    maxFovAngle: 70
-    rayCount: 45
-    useEnemyLayer: 0
-    enemyLayer:
-      serializedVersion: 2
-      m_Bits: 0
-    useObjectLayer: 0
-    objectLayer:
-      serializedVersion: 2
-      m_Bits: 512
-  _angularSpeed: 0
 --- !u!33 &934085236
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1457,8 +1435,27 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &934085238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934085232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3ccc9ea4a5e6f9458da30abc0702f30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Scripts.NewPlayer.PlayerFieldOfVision
+  _range: 10
+  _angle: 80
+  _directionAngle: 0
+  _objectLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  _rayCount: 45
 --- !u!1 &940436925
 GameObject:
   m_ObjectHideFlags: 0

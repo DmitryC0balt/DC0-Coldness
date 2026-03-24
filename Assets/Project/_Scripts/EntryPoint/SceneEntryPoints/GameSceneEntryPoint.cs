@@ -36,6 +36,7 @@ namespace Scripts.EntryPoint
         private void Update()
         {
             _inputHandler.OnProcess();
+            _playerHandler.OnProcess();
         }
 
 
