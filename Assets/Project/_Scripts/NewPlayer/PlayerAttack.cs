@@ -7,6 +7,7 @@ namespace Scripts.NewPlayer
         private Transform _firePoint;
         private int _atkValue;
 
+
         public PlayerAttack()
         {
             

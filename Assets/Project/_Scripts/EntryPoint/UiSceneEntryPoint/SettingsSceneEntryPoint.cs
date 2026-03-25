@@ -1,17 +1,37 @@
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Scripts.EntryPoint
 {
     public sealed class SettingsSceneEntryPoint : SceneEntryPoint
     {
+        [SerializeField] private Slider _soundSlider;
+        [SerializeField] private Slider _musicSlider;
+        [SerializeField] private Slider _sfxSlider; 
+
+
         public override void OnSceneEnter()
+        {
+            SetSliderValue(_soundSlider);
+            SetSliderValue(_musicSlider);
+            SetSliderValue(_sfxSlider);
+        }
+
+
+        public override void OnSceneExit()
         {
             
         }
 
 
-        public override void OnSceneExit()
+        private void SetSliderValue(Slider slider)
+        {
+            
+        }
+
+
+        public void ResetSettings()
         {
             
         }

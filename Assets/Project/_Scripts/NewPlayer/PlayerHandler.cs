@@ -35,6 +35,7 @@ namespace Scripts.NewPlayer
         public override void OnProcess()
         {
             _playerFieldOfVision.SetOrigin(transform.position);
+            _playerFieldOfVision.UpdateSpread(CheckMovRot());
         }
 
 
@@ -53,6 +54,10 @@ namespace Scripts.NewPlayer
             _playerFieldOfVision.OnPostProcess();
         }
 
+
+        private bool CheckMovRot() => _playerMovement.IsMoving || _playerRotation.IsMoving;
+
+        private bool CheckMovement() => _playerMovement.IsMoving;
 
         public void SetMovementDirection(Vector2 direction)
         {
@@ -90,7 +95,13 @@ namespace Scripts.NewPlayer
 
         public void PerformAttack()
         {
-            
+            if (CheckMovement())
+            {
+                Debug.Log("Can't perform shoot while player moved!");
+                return;
+            }
+
+            _playerAttack.PerformAttack();
         }
 
 

@@ -6,7 +6,8 @@ namespace Scripts.NewPlayer
     {
         [SerializeField] private float _range;//Дальность
         [SerializeField] private float _angle;//Угол
-        [SerializeField] private float _directionAngle;
+        [SerializeField] private float _minAngle;
+        [SerializeField] private float _spreadSpeed;
         [SerializeField] private LayerMask _objectLayer;//Слой взаимодействия
         [SerializeField] private int _rayCount;
 
@@ -14,6 +15,7 @@ namespace Scripts.NewPlayer
         private Mesh _mesh;
         private MeshFilter _meshFilter;
         private float _currentAngle;
+        private float _currentFoV;
         private Vector3 _origin;
 
 
@@ -21,6 +23,9 @@ namespace Scripts.NewPlayer
         private const int _triangleVerticesCount = 3;
         private const int _defaultVertexIndex = 1;
         private const int _defaultTriangleIndex = 0;
+
+
+        public float Spread {get; private set;}
 
 
         //private void Start() => OnInitialization();
@@ -49,7 +54,7 @@ namespace Scripts.NewPlayer
         private void DrawSpreadField()
         {
             var currentAngle = _currentAngle;
-            var angleIncrease = _angle / _rayCount;
+            var angleIncrease = _currentFoV / _rayCount;
 
             Vector3[] vertices = new Vector3[_rayCount + _borderRayCount];
             Vector2[] uv = new Vector2[vertices.Length];
@@ -117,7 +122,7 @@ namespace Scripts.NewPlayer
         private float GetAngleFromVector3(Vector3 vector)
         {
             vector = vector.normalized;
-            float angle = Mathf.Atan2(vector.y, vector.x) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(vector.z, vector.x) * Mathf.Rad2Deg;
 
             if (angle < 0)
             {
@@ -131,13 +136,35 @@ namespace Scripts.NewPlayer
         public void SetDirection(Vector3 direction)
         {
             var currentDirection = new Vector3(direction.x, 0, direction.z);
-            _currentAngle = GetAngleFromVector3(currentDirection) - _angle / 2;
+            var newDirection = GetAngleFromVector3(currentDirection) + _currentFoV / 2;
+
+            _currentAngle = newDirection;
+        }
+
+
+        private void CalculateSpread(float speed)
+        {
+            _currentFoV += speed * Time.deltaTime;
+            _currentFoV = Mathf.Clamp(_currentFoV, _minAngle, _angle);
+            Spread = _currentFoV / 2;
+        }
+
+
+        public void UpdateSpread(bool isMoving)
+        {
+            if (isMoving)
+            {
+                CalculateSpread(_spreadSpeed);
+                return;
+            }
+            CalculateSpread(-_spreadSpeed);
         }
 
 
         public void SetOrigin(Vector3 origin)
         {
             _origin = origin;
+            _origin.y = transform.position.y;
         }
     }
 }
