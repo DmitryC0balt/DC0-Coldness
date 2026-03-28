@@ -16,12 +16,6 @@ namespace Scripts.Master
         private const float _persistanceProgressValue = 0.9f;
 
 
-        public bool IsPauseOpen{ get; private set;}
-        public bool IsRecordsOpen{ get; private set;}
-        public bool IsInventoryOpen{ get; private set;}
-        public bool IsConversationOpen{ get; private set;}
-
-
         public SceneMaster(GameMaster gameMaster)
         {
             _gameMaster = gameMaster;
@@ -96,57 +90,6 @@ namespace Scripts.Master
             SceneManager.UnloadSceneAsync(targetSceneName);
         }
 
-
-        public void ShowPause(bool isActive)
-        {
-            OpenTargetScene(isActive, "Pause");
-            IsPauseOpen = isActive;
-        }
-
-
-        public void ShowRecords(bool isActive)
-        {
-            OpenTargetScene(isActive, "Records");
-            IsRecordsOpen = isActive;
-        }
-
-
-        public void ShowInventory(bool isActive)
-        {
-            OpenTargetScene(isActive, "Inventory");
-            IsInventoryOpen = isActive;
-        }
-
-
-        public void ShowConversation(bool isActive)
-        {
-            OpenTargetScene(isActive, "Conversation");
-            IsConversationOpen = isActive;
-        }
-
-
-        public void CloseUiScenes()
-        {
-            if (IsPauseOpen)
-            {
-                ShowPause(false);
-            }
-
-            if (IsRecordsOpen)
-            {
-                ShowRecords(false);
-            }
-
-            if (IsInventoryOpen)
-            {
-                ShowInventory(false);
-            }
-
-            if (IsConversationOpen)
-            {
-                ShowConversation(false);
-            }
-        }
-
     }
+
 }

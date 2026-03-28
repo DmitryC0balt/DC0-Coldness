@@ -3,6 +3,7 @@ using Scripts.MonoCash.Tier1;
 using Scripts.NewPlayer;
 using UnityEngine;
 
+
 namespace Scripts.AltInput
 {
     public class AltInputHandler : MonoCashListener
@@ -12,16 +13,11 @@ namespace Scripts.AltInput
         private GameEntryPoint _instance;
         private Camera _camera;
 
+
         private Vector2 _movementDirection;
         private Vector3 _mousePosition;
 
 
-        private bool _isConversationOpen;
-        private bool _isInventoryOpen;
-        private bool _isRecordsOpen;
-
-
-        
         public void SetCamera(Camera camera)
         {
             _camera = camera;
@@ -36,12 +32,13 @@ namespace Scripts.AltInput
 
         public override void OnProcess()
         {
+            ButtonLogic();
+
             GetMovementDirection();
             GetMousePosition();
 
             _playerHandler.SetMovementDirection(_movementDirection);
             _playerHandler.SetMousePosition(_mousePosition);
-
         }
 
 
@@ -69,25 +66,25 @@ namespace Scripts.AltInput
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                //Пауза
+                
             }
 
 
             if (Input.GetKeyDown(KeyCode.Q))
             {
-                //Диалог
+              
             }
 
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                //Инвентарь
+                
             }
 
 
             if (Input.GetKeyDown(KeyCode.R))
             {
-                //Записи
+                
             }
         }
     }

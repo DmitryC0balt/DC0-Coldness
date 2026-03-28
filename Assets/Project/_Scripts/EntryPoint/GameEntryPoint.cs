@@ -60,18 +60,6 @@ namespace Scripts.EntryPoint
         //Заставка
         public void ShowSplash(bool isActive) => _sceneMaster.OpenTargetScene(isActive, "Splash");
 
-        //Диалог
-        public void ShowConversation(bool isActive) => _sceneMaster.OpenTargetScene(isActive, "Conversation");
-
-        //Инвентарь
-        public void ShowInventory(bool isActive) => _sceneMaster.OpenTargetScene(isActive, "Inventory");
-
-        //Записи
-        public void ShowRecords(bool isActive) => _sceneMaster.OpenTargetScene(isActive, "Records");
-
-        //Конец игры
-        public void ShowGameOver(bool isActive) => _sceneMaster.OpenTargetScene(isActive, "GameOver");
-
 #endregion
 
 

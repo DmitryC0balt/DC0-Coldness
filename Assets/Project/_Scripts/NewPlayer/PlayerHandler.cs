@@ -137,6 +137,7 @@ namespace Scripts.NewPlayer
         [ColorUsage(true)] public Color gizmoColor;
 
         [Header("Availibility")]
+        public LayerMask npcLayer;
         public float conversationRadius;
         public uint conversationCapacity;
     }
