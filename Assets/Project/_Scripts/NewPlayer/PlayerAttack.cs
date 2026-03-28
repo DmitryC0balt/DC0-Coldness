@@ -6,23 +6,32 @@ namespace Scripts.NewPlayer
     {
         private Transform _firePoint;
         private int _atkValue;
+        private float _currentSpread;
 
-
-        public PlayerAttack()
+        public PlayerAttack(PlayerAttackSetup playerAttackSetup)
         {
-            
+            _firePoint = playerAttackSetup.firePoint;
+            _atkValue = playerAttackSetup.atkValue;
         }
 
 
-        public void calculateSpread(float angle)
+        public void SetAngleSpread(float angle)
         {
-            
+            _currentSpread = angle;
+        }
+
+
+        private float CalculateSpread()
+        {
+            var spread = Random.Range(0, _currentSpread);
+            return spread;
         }
 
 
         public void PerformAttack()
         {
-            
+            var spread = CalculateSpread();
+
         }
     }
 }
